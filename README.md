@@ -11,15 +11,15 @@ I built a Graph Neural Network (GNN) model capable of learning from graph data (
 
 # Specifically, the project includes:
 
- > Graph data loading & preprocessing — from datasets like Cora, PubMed, or your own graph data (nodes, edges, and features).
+-> Graph data loading & preprocessing — from datasets like Cora, PubMed, or your own graph data (nodes, edges, and features).
 
-> Model definition — a customizable GNN architecture using GCNConv, GraphSAGE, or GATConv layers.
+-> Model definition — a customizable GNN architecture using GCNConv, GraphSAGE, or GATConv layers.
 
-> Training pipeline — with loss functions, optimizers, and accuracy tracking.
+-> Training pipeline — with loss functions, optimizers, and accuracy tracking.
 
-> Evaluation — on validation/test graphs.
+-> Evaluation — on validation/test graphs.
 
-> Prediction — node-level or graph-level classification on new unseen data.
+-> Prediction — node-level or graph-level classification on new unseen data.
 
 # Why I Built It?
 
@@ -27,14 +27,15 @@ I built this project to explore how graph neural networks can effectively repres
 
 Motivation:
 
-> Many real-world problems involve entities and relationships — like molecules (atoms and bonds), users (friendships), or papers (citations).
+-> Many real-world problems involve entities and relationships — like molecules (atoms and bonds), users (friendships), or papers (citations).
 
-> GNNs allow learning representations that capture both local and global structure of these relationships.
+-> GNNs allow learning representations that capture both local and global structure of these relationships.
 
-> This project serves as a foundational implementation for anyone learning or researching graph deep learning, molecular property prediction, or social network analysis.
+-> This project serves as a foundational implementation for anyone learning or researching graph deep learning, molecular property prediction, or social network analysis.
 
 # How I Built It?
-> Step 1️⃣ — Setup and Install Dependencies
+
+-> Step 1️⃣ — Setup and Install Dependencies
 
 Installed and imported essential libraries for deep learning and graph processing:
 
@@ -42,7 +43,7 @@ Installed and imported essential libraries for deep learning and graph processin
     pip install torch-geometric torch-scatter torch-sparse torch-cluster torch-spline-conv
     pip install matplotlib numpy scikit-learn
 
-> Step 2️⃣ — Data Loading
+-> Step 2️⃣ — Data Loading
 
 Used PyTorch Geometric datasets (e.g., Planetoid for Cora/Citeseer)
 
@@ -56,7 +57,7 @@ Split data into train, validation, and test sets.
     dataset = Planetoid(root='data/', name='Cora')
     data = dataset[0]
 
-> Step 3️⃣ — Data Preprocessing
+-> Step 3️⃣ — Data Preprocessing
 
 Normalized node features (x)
 
@@ -68,7 +69,7 @@ Prepared adjacency structure (edge_index) for GNN message passing.
 
     data.x = (data.x - data.x.mean()) / data.x.std()
 
-> Step 4️⃣ — Model Definition
+-> Step 4️⃣ — Model Definition
 
 Defined a Graph Convolutional Network (GCN) using PyTorch Geometric layers.
 
@@ -91,7 +92,7 @@ Defined a Graph Convolutional Network (GCN) using PyTorch Geometric layers.
         x = self.conv2(x, edge_index)
         return x
 
-> Step 5️⃣ — Training the Model
+-> Step 5️⃣ — Training the Model
 
 Defined loss function (CrossEntropyLoss) and optimizer (Adam).
 
@@ -111,7 +112,7 @@ Implemented training loop with accuracy tracking.
     optimizer.step()
     return loss
 
-> Step 6️⃣ — Evaluation
+-> Step 6️⃣ — Evaluation
 
 Evaluated model performance using test set accuracy and loss:
 
@@ -123,7 +124,7 @@ Evaluated model performance using test set accuracy and loss:
     acc = int(correct) / int(data.test_mask.sum())
     return acc
 
-> Step 7️⃣ — Prediction
+-> Step 7️⃣ — Prediction
 
 Used the trained GNN model to predict classes or node embeddings for unseen data.
 
@@ -133,13 +134,14 @@ Used the trained GNN model to predict classes or node embeddings for unseen data
 
 # Results:
 
-Achieved high accuracy (~80%+) on Cora node classification task (example).
+-> Achieved high accuracy (~80%+) on Cora node classification task (example).
 
-The model successfully captures the structure of the graph and learns node embeddings that separate classes.
+-> The model successfully captures the structure of the graph and learns node embeddings that separate classes.
 
-Can be adapted easily for graph classification, link prediction, or recommendation tasks.
+-> Can be adapted easily for graph classification, link prediction, or recommendation tasks.
 
 # Required Libraries:
+
 Library	Purpose
 
     torch	Core deep learning framework
@@ -151,13 +153,13 @@ Library	Purpose
     
 # Key Learning Outcomes:
 
-> Understand the structure of graph data (nodes, edges, features).
+-> Understand the structure of graph data (nodes, edges, features).
 
-> Implement GNN layers (message passing, aggregation).
+-> Implement GNN layers (message passing, aggregation).
 
-> Learn node/graph classification tasks.
+-> Learn node/graph classification tasks.
 
-> Gain practical knowledge of PyTorch Geometric workflows.
+-> Gain practical knowledge of PyTorch Geometric workflows.
 
 
 # Conclusion:
